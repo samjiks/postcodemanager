@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    <title>Ann the Pharmacist - Search Engine</title>
+  <script type="text/javascript">
+
+  // variable to hold request
+var request;
+// bind to the submit event of our form
+$("#foo").submit(function(event){
+    // abort any pending request
+    if (request) {
+        request.abort();
+    }
+	alert("FEEL");
+    // setup some local variables
+    var $form = $(this);
+    // let's select and cache all the fields
+    var $inputs = $form.find("input, select, button, textarea");
+    // serialize the data in the form
+    var serializedData = $form.serialize();
+
+    // let's disable the inputs for the duration of the ajax request
+    $inputs.prop("disabled", true);
+
+    // fire off the request to /form.php
+    $.post('/searchengine.html', serializedData, function(response) {
+    // log the response to the console
+    console.log("Response: "+response);
+	});
+	
+    // callback handler that will be called on success
+    request.done(function (response, textStatus, jqXHR){
+        // log a message to the console
+        console.log("Hooray, it worked!");
+    });
+
+    // callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // log the error to the console
+        console.error(
+            "The following error occured: "+
+            textStatus, errorThrown
+        );
+    });
+
+    // callback handler that will be called regardless
+    // if the request failed or succeeded
+    request.always(function () {
+        // reenable the inputs
+        $inputs.prop("disabled", false);
+    });
+
+    // prevent default posting of form
+    event.preventDefault();
+});
+  /* var request;
+  $("#searchgoogle").submit(function(event){
+
+	var $form = $(this);
+	
+    // let's select and cache all the fields
+    var $inputs = $form.find("input, select, button, textarea");
+	var serializedData = $form.serialize();
+	alert(searializedData);
+	$inputs.prop("disabled", true);
+	
+	 request = $.ajax({
+        url: "/searhengine.html",
+        type: "post",
+        data: serializedData
+    });
+	 request.done(function (response, textStatus, jqXHR){
+        // log a message to the console
+		alert(response);
+        console.log("Hooray, it worked!");
+    });
+  )}; */
+   /* (function() {
+    var cx = '004576107937898604235:aihzlcjsdam';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();   */
+  
+
+</script>
+  </head>
+  <body>
+<!-- 
+  <div>
+  <gcse:search></gcse:search>
+ </div>
+ <div>
+  <gcse:searchresults>
+</div> -->
+<div>
+<form id="searchgoogle" method="POST">
+<label for="bar">Check Text: </label>
+<textarea name="search" id="search" width="1000px" height="500px" ></textarea>
+<input type="submit" name="value">
+</form>
+
+</div>
+ <form id="foo">
+
+    <label for="bar">A bar</label>
+    <input id="bar" name="bar" type="text" value="" />
+
+    <input type="submit" value="Send" />
+
+</form>
+
+  
+  
+</body>
+</html>
