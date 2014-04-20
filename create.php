@@ -38,14 +38,6 @@ include_once('dbconnect.php');
 			$errors['postcode'] = 'Postcode is required.';
 		}
 		
-		if(empty($_POST['country'])) { 
-			$errors['country'] = 'Country is required.';
-		}
-		if($_POST['country'] == 'Select Country') { 
-			$errors['country'] = 'Country is required.';
-		}
-
-		
 		if ( ! empty($errors)) {
 
 		
@@ -116,8 +108,7 @@ include_once('dbconnect.php');
       <b> Title: </b>
       </label>
  
-		<select class="form-control" name="title"><option>Select</option><option>Evg.</option><option>Bro.</option><option>Sis.</option><option>Mr.</option><option>Mrs.</option><option>Miss.</option><option>Dr.</option><option>Prof.</option><option>Rev.</option><option>Pr.</option><option>Fr.</option></select>
-
+		<select class="form-control" id="title" name="title"><option value="select">Select</option><option value="<?php echo isset($_POST['title']) ? $_POST['title'] : '' ?>">Evg.</option><option value="Bro.">Bro.</option><option value="Sis.">Sis.</option><option value="Mr.">Mr.</option><option value="Mrs.">Mrs.</option><option value="Miss.">Miss.</option><option value="Dr.">Dr.</option><option value="Prof.">Prof.</option><option value="Rev.">Rev.</option><option value="Pr.">Pr.</option><option value="Fr.">Fr.</option></select>
  </td>
  </tr>
  <tr>
@@ -137,7 +128,7 @@ include_once('dbconnect.php');
        <b> Address1: </b>
       </label>
       <div class="col-md-4">
-        <textarea class="form-control" id="address1" name="address1" value="<?php echo isset($_POST['address1']) ? $_POST['address1'] : '' ?>"></textarea>
+        <textarea class="form-control" id="address1" name="address1"><?php echo isset($_POST['address1']) ? $_POST['address1'] : '' ?></textarea>
       </div>
     </div>
 	</td>
@@ -147,7 +138,7 @@ include_once('dbconnect.php');
        <b> Address2: </b>
       </label>
       <div class="col-md-4">
-        <textarea class="form-control" id="address2" name="address2" value="<?php echo isset($_POST['address2']) ? $_POST['address2'] : '' ?>" ></textarea>
+        <textarea class="form-control" id="address2" name="address2" ><?php echo isset($_POST['address2']) ? $_POST['address2'] : '' ?></textarea>
       </div>
     </div>
 	</td>
@@ -193,7 +184,7 @@ include_once('dbconnect.php');
       </label>
       <div class="col-md-4">
    <select name="country"> 
-<option value="" selected="selected">India</option> 
+<option value="India" selected="selected">India</option> 
 <option value="United States">United States</option> 
 <option value="United Kingdom">United Kingdom</option> 
 <option value="Afghanistan">Afghanistan</option> 
