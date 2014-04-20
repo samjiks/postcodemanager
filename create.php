@@ -193,7 +193,7 @@ include_once('dbconnect.php');
       </label>
       <div class="col-md-4">
    <select name="country"> 
-<option value="" selected="selected">Select Country</option> 
+<option value="" selected="selected">India</option> 
 <option value="United States">United States</option> 
 <option value="United Kingdom">United Kingdom</option> 
 <option value="Afghanistan">Afghanistan</option> 
@@ -294,7 +294,6 @@ include_once('dbconnect.php');
 <option value="Hong Kong">Hong Kong</option> 
 <option value="Hungary">Hungary</option> 
 <option value="Iceland">Iceland</option> 
-<option value="India">India</option> 
 <option value="Indonesia">Indonesia</option> 
 <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option> 
 <option value="Iraq">Iraq</option> 
